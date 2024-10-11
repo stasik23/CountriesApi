@@ -8,6 +8,9 @@ import './index.css'
 import { LoaderProvider } from './utils/LoaderUtil';
 import { Layout } from './components/Layout';
 import App from './App';
+import { CountryPage } from './pages/CountryPage';
+import { SighInPage } from './pages/SignInPage';
+import { SighUpPage } from './pages/SignUpPage';
 
 const queryClient = new QueryClient()
 
@@ -17,6 +20,32 @@ const router = createBrowserRouter([
     element: (
       <Layout>
         <App />
+      </Layout>
+    )
+  },
+  {
+    path: "/country",
+    element: (
+      <Layout>
+        <CountryPage />
+      </Layout>
+    )
+  },
+  {
+    path: "/login",
+    element: (
+      <Layout>
+        <SighInPage />
+        {/* <ThemeSwitch /> */}
+      </Layout>
+    )
+  },
+  {
+    path: "/register",
+    element: (
+      <Layout>
+        <SighUpPage />
+        {/* <ThemeSwitch /> */}
       </Layout>
     )
   },

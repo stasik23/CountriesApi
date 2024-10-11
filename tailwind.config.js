@@ -5,4 +5,16 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Nunito Sans', 'sans-serif'],
+      },
+      colors: {
+        primary: "var(--color-primary)",
+        theme: "var(--color-theme)",
+        text: "var(--color-text)"
+      }
+    }
+  }
 }

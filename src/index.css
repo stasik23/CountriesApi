@@ -2,7 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-toggle-light: hsl(0, 0%, 100%);
-  --color-toggle-dark: hsl(0, 0%, 98%);
+
+@layer base {
+  :root {
+    --color-primary: hsl(0, 0%, 0%);
+    /* --color-theme: hsl(0, 0%, 98%); */
+    --color-theme: hsl(0, 0%, 0%);
+    --color-text: hsl(0, 0%, 100%);
+  }
+}
+
+.theme-black {
+  --color-primary: hsl(0, 0%, 100%);
+  /* --color-theme: hsl(0, 0%, 98%); */
+  --color-theme: hsl(0, 0%, 0%);
+  --color-text: hsl(0, 0%, 0%);
 }

@@ -11,7 +11,7 @@
     width: 36px;
     height: 36px;
     position: relative;
-    box-shadow: inset 14px -14px 0 0 var(--color-toggle-dark, #000);
+    box-shadow: inset 14px -14px 0 0 var(--color-theme, #000);
     transform: scale(1) rotate(-2deg);
     transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
   }
@@ -36,14 +36,14 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    box-shadow: 0 -23px 0 var(--color-toggle-light, #eee),
-      0 23px 0 var(--color-toggle-light, #eee),
-      23px 0 0 var(--color-toggle-light, #eee),
-      -23px 0 0 var(--color-toggle-light, #eee),
-      15px 15px 0 var(--color-toggle-light, #eee),
-      -15px 15px 0 var(--color-toggle-light, #eee),
-      15px -15px 0 var(--color-toggle-light, #eee),
-      -15px -15px 0 var(--color-toggle-light, #eee);
+    box-shadow: 0 -23px 0 var(--color-theme, #eee),
+      0 23px 0 var(--color-theme, #eee),
+      23px 0 0 var(--color-theme, #eee),
+      -23px 0 0 var(--color-theme, #eee),
+      15px 15px 0 var(--color-theme, #eee),
+      -15px 15px 0 var(--color-theme, #eee),
+      15px -15px 0 var(--color-theme, #eee),
+      -15px -15px 0 var(--color-theme, #eee);
     transform: scale(0);
     transition: all 0.3s ease;
   }
@@ -55,7 +55,7 @@
   }
   
   .container input:checked + div::before {
-    background: var(--color-toggle-light, #eee);
+    background: var(--color-theme, #eee);
     transition: background 0.3s ease 0.1s;
   }
   
