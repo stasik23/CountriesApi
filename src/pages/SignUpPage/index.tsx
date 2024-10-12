@@ -33,12 +33,12 @@ export const SighUpPage = () => {
 
   const handleSignUp = async () => {
     createUserWithEmailAndPassword(auth, regEmail, regPassword)
-      .then((userCredential) => {
+      .then((userCredential: { user: any; }) => {
         const user = userCredential.user;
         console.log("User created", user);
         navigate('/login')
       })
-      .catch((error) => {
+      .catch((error: { code: any; message: any; }) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log("Error: ", errorMessage);
@@ -85,7 +85,7 @@ export const SighUpPage = () => {
 
           <input {...register("confirmPassword", {
             required: "Confirm password!",
-            validate: (match) => {
+            validate: (match: void) => {
               const password = getPassValue(regPassword)
               return match === password || "Passwords should match!"
             }

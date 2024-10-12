@@ -27,7 +27,7 @@ export const SighInPage = () => {
 
   const handleSignIn = async () => {
     SignIn({ auth, email: isEmail, password: isPassword });
-    navigate('/home')
+    navigate('/')
     console.log(isEmail, isPassword);
   };
 

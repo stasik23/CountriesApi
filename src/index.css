@@ -5,16 +5,18 @@
 
 @layer base {
   :root {
-    --color-primary: hsl(0, 0%, 0%);
+    --color-background: hsl(0, 0%, 98%);
     /* --color-theme: hsl(0, 0%, 98%); */
-    --color-theme: hsl(0, 0%, 0%);
-    --color-text: hsl(0, 0%, 100%);
+    --color-theme: hsl(0, 0%, 52%);
+    --color-elements: hsl(0, 0%, 100%);
+    --color-text: hsl(200, 15%, 8%);
   }
 }
 
 .theme-black {
-  --color-primary: hsl(0, 0%, 100%);
+  --color-background: hsl(207, 26%, 17%);
   /* --color-theme: hsl(0, 0%, 98%); */
   --color-theme: hsl(0, 0%, 0%);
-  --color-text: hsl(0, 0%, 0%);
+  --color-elements: hsl(0, 0%, 100%);
+  --color-text: hsl(0, 0%, 100%);
 }

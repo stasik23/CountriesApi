@@ -13,7 +13,8 @@ module.exports = {
       colors: {
         primary: "var(--color-primary)",
         theme: "var(--color-theme)",
-        text: "var(--color-text)"
+        text: "var(--color-text)",
+        background:"var(--color-background)"
       }
     }
   }
