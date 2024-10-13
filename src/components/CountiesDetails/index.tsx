@@ -1,10 +1,9 @@
-import React from 'react';
 import { ICountry } from '../../types';
 import data from "../../../data.json"
 
 const countries: ICountry[] = data;
 
-export const CountryDetails = ({ countries }: ICountry) => {
+export const CountryDetails = () => {
   return (
     <div className="flex flex-wrap p-8 bg-gray-100">
       {countries && countries.map((country: ICountry) => (
