@@ -13,18 +13,19 @@ export const CountryDetails = () => {
   }
 
   return (
-    <div className="flex justify-between flex-wrap p-8 bg-gray-100">
+    <div className="flex justify-between flex-wrap p-16 bg-gray-100">
       <div key={selectedCountry.alpha2Code} className="w-11/12 md:w-1/2 p-4">
         <img src={selectedCountry.flags?.svg} alt={`${selectedCountry.name} Flag`} className="w-full" />
-        <h1 className="text-4xl font-sans mb-4">{selectedCountry.name}</h1>
-        <p><strong>Native Name:</strong> {selectedCountry.nativeName}</p>
-        <p><strong>Population:</strong> {selectedCountry.population?.toLocaleString()}</p>
-        <p><strong>Region:</strong> {selectedCountry.region}</p>
-        <p><strong>Subregion:</strong> {selectedCountry.subregion}</p>
-        <p><strong>Capital:</strong> {selectedCountry.capital}</p>
-        <p><strong>Top Level Domain:</strong> {Array.isArray(selectedCountry.topLevelDomain) ? selectedCountry.topLevelDomain.join(', ') : selectedCountry.topLevelDomain}</p>
-        <p><strong>Currencies:</strong> {selectedCountry.currencies?.map((c) => `${c.name} (${c.symbol})`).join(', ')}</p>
-        <p><strong>Languages:</strong> {selectedCountry.languages?.map((l) => l.name).join(', ')}</p>
+          <h1 className="text-4xl font-sans mb-4">{selectedCountry.name}</h1>
+          <p><strong>Native Name:</strong> {selectedCountry.nativeName}</p>
+          <p><strong>Population:</strong> {selectedCountry.population?.toLocaleString()}</p>
+          <p><strong>Region:</strong> {selectedCountry.region}</p>
+          <p><strong>Subregion:</strong> {selectedCountry.subregion}</p>
+          <p><strong>Capital:</strong> {selectedCountry.capital}</p>
+          <p><strong>Top Level Domain:</strong> {Array.isArray(selectedCountry.topLevelDomain) ? selectedCountry.topLevelDomain.join(', ') : selectedCountry.topLevelDomain}</p>
+          <p><strong>Currencies:</strong> {selectedCountry.currencies?.map((c) => `${c.name} (${c.symbol})`).join(', ')}</p>
+          <p><strong>Languages:</strong> {selectedCountry.languages?.map((l) => l.name).join(', ')}</p>
+
 
         <div className="mt-4">
           <strong>Border Countries:</strong>

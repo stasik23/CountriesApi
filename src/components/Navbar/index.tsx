@@ -5,19 +5,11 @@ import styled from 'styled-components';
 
 export const Navbar = () => {
 
-  const NavbarWrapper = styled.nav`
-    background-color: ${({ theme }) => (theme ? '#ffffff' : '#000000')};
-    color: ${({ theme }) => (theme ? '#000000' : '#ffffff')};
-    transition: background-color 0.4s, color 0.4s;
-  `;
-
   return (
     // TODO Ask how fix themeSwapper
-    <NavbarWrapper>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
-        <a href='/' className="self-center text-2xl font-semibold whitespace-nowrap">
-          GeoStasik
+        <a href='/' className="self-left text-2xl font-semibold whitespace-nowrap">
+          Where in the world?
         </a>
 
         <div className="flex md:order-2 space-x-3 rtl:space-x-reverse gap-5">
@@ -39,6 +31,5 @@ export const Navbar = () => {
           </ul>
         </div>
       </div>
-    </NavbarWrapper>
   )
 }
