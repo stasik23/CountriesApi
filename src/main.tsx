@@ -12,6 +12,7 @@ import { CountryPage } from './pages/CountryPage';
 import { SighInPage } from './pages/SignInPage';
 import { SighUpPage } from './pages/SignUpPage';
 import { UndefinedPage } from './pages/UndefinedPage';
+import AuthRouter from './route/AuthRouter';
 
 const queryClient = new QueryClient()
 
@@ -20,7 +21,9 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <Layout>
-        <App />
+        <AuthRouter>
+          <App />
+        </AuthRouter>
       </Layout>
     )
   },
