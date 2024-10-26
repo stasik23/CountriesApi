@@ -20,3 +20,32 @@
   --color-elements: hsl(0, 0%, 100%);
   --color-text: hsl(0, 0%, 100%);
 }
+
+@layer components {
+
+  .keyhole,
+  .key {
+    animation: showKey 0.5s 0.5s paused ease-out forwards;
+  }
+
+  .ghost {
+    animation: hoverGhost 20s ease-in-out 2;
+  }
+}
+
+@keyframes showKey {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes hoverGhost {
+  25% {
+    transform: translateX(20vw);
+  }
+
+  75% {
+    transform: translateX(-20vw);
+  }
+}

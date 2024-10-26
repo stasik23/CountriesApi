@@ -11,6 +11,7 @@ import App from './App';
 import { CountryPage } from './pages/CountryPage';
 import { SighInPage } from './pages/SignInPage';
 import { SighUpPage } from './pages/SignUpPage';
+import { UndefinedPage } from './pages/UndefinedPage';
 
 const queryClient = new QueryClient()
 
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       </Layout>
     )
   },
+  {
+    path: '*',
+    element: <UndefinedPage />
+  }
 ])
 
 const root = document.getElementById('root');

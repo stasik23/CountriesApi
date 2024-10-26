@@ -1,4 +1,3 @@
-import React from 'react'
 import { CountryDetails } from '../../components/CountiesDetails'
 
 export const CountryPage = () => {

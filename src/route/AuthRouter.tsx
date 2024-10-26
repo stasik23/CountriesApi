@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { auth } from './firebase';
+import { auth } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import './App.css'
-import { CountriesGrid } from './components/CountriesGrid'
-import { NotAuthorized } from './pages/NotAuthorized';
+import { CountriesGrid } from '../components/CountriesGrid'
+import { NotAuthorized } from '../pages/NotAuthorized';
 
 function App() {
   const [Authorized, setAuthorized] = useState(false);
