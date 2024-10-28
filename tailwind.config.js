@@ -12,7 +12,19 @@ module.exports = {
         theme: "var(--color-theme)",
         text: "var(--color-text)",
         background: "var(--color-background)"
-      }
+      },
+        fontFamily: {
+          bungee: ['Bungee', 'cursive'],
+        },
+        keyframes: {
+          alarmOn: {
+            '0%, 100%': { fill: '#e62326' },
+            '50%': { fill: 'darkred' },
+          },
+        },
+        animation: {
+          'alarm-on': 'alarmOn 0.5s infinite',
+        },
     }
   },
   plugins: [],

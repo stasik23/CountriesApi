@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactThemeToggleButton } from "../../utils/ThemeSettings.tsx";
 import "../../index.css";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
@@ -19,8 +19,24 @@ const Wrapper = styled.div`
 `;
 
 export const ThemeSwitch = () => {
-  const [isDark, setDark] = useState(false);
+  const [isDark, setDark] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme === 'dark' ||
+      (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  });
+
   const theme = isDark ? dark : light;
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDark]);
+
+  console.log(isDark);
 
   return (
     <ThemeProvider theme={theme}>
@@ -35,4 +51,3 @@ export const ThemeSwitch = () => {
     </ThemeProvider>
   );
 };
-

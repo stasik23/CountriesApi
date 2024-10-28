@@ -12,7 +12,7 @@ import { CountryPage } from './pages/CountryPage';
 import { SighInPage } from './pages/SignInPage';
 import { SighUpPage } from './pages/SignUpPage';
 import { UndefinedPage } from './pages/UndefinedPage';
-import AuthRouter from './route/AuthRouter';
+import { AuthRouter } from './route/AuthRouter';
 
 const queryClient = new QueryClient()
 
