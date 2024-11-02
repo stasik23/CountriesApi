@@ -1,11 +1,40 @@
+import { useEffect, useState } from 'react';
 import { ICountry } from '../../types';
-import data from "../../../data.json"
+// import data from "../../../data.json"
 import { useParams } from 'react-router-dom';
 
-export const CountryDetails = () => {
+export const CountryDetails = ({country}: {country: ICountry}) => {
+  // const { country } = useParams<{ country: string }>();
+  // const countries = data as unknown as ICountry[];
+  // const fetchData = async () => {
+  //   const response = await fetch("https://restcountries.com/v3.1/all");
+  //   const data = await response.json();
+  //   return data;
+  // };
+  // const countries = fetchData as unknown as ICountry[];
+  // const selectedCountry = countries.find((c: ICountry) => c.name === country);
+
   const { country } = useParams<{ country: string }>();
-  const countries = data as unknown as ICountry[];
-  const selectedCountry = countries.find((c) => c.name === country);
+  const [selectedCountry, setSelectedCountry] = useState<ICountry | undefined>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://restcountries.com/v3.1/all");
+        const data = await response.json();
+        const found = data.find((c: ICountry) =>
+          c.name.toLowerCase() === country?.toLowerCase()
+        );
+        setSelectedCountry(found);
+      } catch (error) {
+        console.error("Error fetching country data:", error);
+      }
+    };
+
+    fetchData();
+  }, [country]);
+
+  console.log("selectedCountry", selectedCountry);
 
   if (!selectedCountry) {
     return <div>Country not found</div>;

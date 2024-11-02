@@ -11,7 +11,7 @@ import App from './App';
 import { CountryPage } from './pages/CountryPage';
 import { SighInPage } from './pages/SignInPage';
 import { SighUpPage } from './pages/SignUpPage';
-import { UndefinedPage } from './pages/UndefinedPage';
+import { UndefinedPage } from './pages/UndefinedPage'; //TODO imports to 1 stroke
 import { AuthRouter } from './route/AuthRouter';
 
 const queryClient = new QueryClient()
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <Layout>
-        <AuthRouter>
+        <AuthRouter> {/*TODO AuthRouter to Layout */} 
           <App />
         </AuthRouter>
       </Layout>
@@ -64,8 +64,11 @@ if (root) {
   createRoot(root).render(
     <QueryClientProvider client={queryClient}>
       <LoaderProvider>
-        <RouterProvider router={router} />
+        <RouterProvider router={router} /> {/*TODO RouterProvider to other component*/}
       </LoaderProvider>
     </QueryClientProvider >
   );
 }
+//TODO ADD COMMON FOLDER AND ADD ROUTES,TYPES TO IT
+
+//TODO UTILS NAMES TO LOWERCASE

@@ -21,7 +21,7 @@ export const SighInPage = () => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-  }, [setLoading]);
+  }, [setLoading]); //TODO DELETE THIS useEffect
 
   if (isLoading) return <div><Loader/></div>
 
@@ -29,7 +29,7 @@ export const SighInPage = () => {
     SignIn({ auth, email: isEmail, password: isPassword });
     navigate('/')
     console.log(isEmail, isPassword);
-  };
+  }; //TODO EXPORT handleSignIn TO UTILS FOLDER
 
 
   return (
@@ -66,7 +66,7 @@ export const SighInPage = () => {
           type="password"
           placeholder="Password"
           value={isPassword}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)} //TODO CHANGE onChange TO getValue
         />
         {errors.password && <p>{errors.password.message as string}</p>}
 

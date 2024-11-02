@@ -18,7 +18,7 @@ export const AuthRouter: React.FC<AuthRouterProps> = () => {
       setAuthorized(!!user);
       setLoading(false);
     });
-    // return () => unsub();
+    return () => unsub();
   }, []);
 
   console.log("Authorized", Authorized);
@@ -30,7 +30,7 @@ export const AuthRouter: React.FC<AuthRouterProps> = () => {
 
   return (
     <>
-      <CountriesGrid />
+      <CountriesGrid />  {/*TODO ADD CHILDREN TO COMPONENT*/}
     </>
   )
 }

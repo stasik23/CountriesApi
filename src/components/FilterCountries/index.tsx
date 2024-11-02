@@ -10,7 +10,7 @@ export const FilterCountries: React.FC<FilterCountriesProps> = ({ onFilter }) =>
     const [searchQuery, setSearchQuery] = useState("");
     const [region, setRegion] = useState("All");
 
-    const countries: ICountry[] = data;
+    const countries: ICountry[] = data as unknown as ICountry[];
 
     useEffect(() => {
         const filteredCountries = countries.filter(

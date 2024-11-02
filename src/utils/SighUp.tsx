@@ -1,14 +1,14 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Bounce, toast } from "react-toastify";
 
-interface CreateUser {
+interface CreateUser { 
     auth: any;
     email: string;
     password: string;
 }
 
 export const SighUp = ({ auth, email, password }: CreateUser) => {
-    const notify = (message: string, type: 'success' | 'error') => {
+    const notify = (message: string, type: 'success' | 'error') => { //TODO 'success' | 'error' TO ENU
         toast(message, {
             position: "top-right",
             autoClose: 5000,

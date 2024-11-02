@@ -43,7 +43,7 @@ export const SighUpPage = () => {
         const errorMessage = error.message;
         console.log("Error: ", errorMessage);
         console.log("In: ", errorCode);
-      });
+      });  //TODO EXPORT handleSignUp TO UTILS FOLDER
 
   }
   return (

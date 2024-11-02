@@ -24,3 +24,4 @@ export const useLoader = () => {
   }
   return context;
 };
+//TODO LOADER TO PROVIDERS FOLDER

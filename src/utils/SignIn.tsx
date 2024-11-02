@@ -2,8 +2,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-interface User {
-  auth: any;
+interface User { //TODO ADD IUSER INTERFACE TO GLOBAL
+  auth: any; //TODO DECREASE ANY TYPE
   email: string;
   password: string;
 }
