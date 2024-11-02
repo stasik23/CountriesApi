@@ -38,7 +38,7 @@ export const NotAuthorizedPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center text-center min-h-screen bg-gray-900 text-white font-bungee">
+    <div className="flex flex-col items-center text-center min-h-screen bg-gray-300 text-black font-bungee">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         id="robot-error"

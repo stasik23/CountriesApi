@@ -7,7 +7,7 @@ export const Navbar = ({ isDark }: { isDark: boolean }) => {
     SighOut();
   };
   return (
-    <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-8">
       <a href='/' className={`self-left text-2xl font-semibold whitespace-nowrap ${isDark ? 'text-white' : 'text-black'}`}>
         Where in the world?
       </a>
