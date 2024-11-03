@@ -3,14 +3,14 @@ import { auth } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import '../App.css';
 import { CountriesGrid } from '../components/CountriesGrid';
-import { NotAuthorizedPage } from '../pages/NotAuthorized';
+import { NotAuthorized } from '../pages/NotAuthorized';
 import { Loader } from '../components/Loader';
 
 interface AuthRouterProps {
-  children: React.ReactNode;
+  // children: React.ReactNode;
 }
 
-export const AuthRouter: React.FC<AuthRouterProps> = () => {
+export const AuthRouter: React.FC<AuthRouterProps> = () => { //{children}
   const [Authorized, setAuthorized] = useState(false);
   const [Loading, setLoading] = useState(true);
   useEffect(() => {
@@ -21,16 +21,14 @@ export const AuthRouter: React.FC<AuthRouterProps> = () => {
     return () => unsub();
   }, []);
 
-  console.log("Authorized", Authorized);
-  console.log("Loading", Loading);
-
-  if (!Authorized) { return <NotAuthorizedPage /> };
-
   if (Loading) { return <Loader /> }
+
+  if (!Authorized) { return <NotAuthorized /> }
 
   return (
     <>
-      <CountriesGrid />  {/*TODO ADD CHILDREN TO COMPONENT*/}
+      {/* {children} */}
+      <CountriesGrid />
     </>
   )
 }

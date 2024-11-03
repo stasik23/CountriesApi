@@ -1,6 +1,7 @@
 import '../../index.css';
 import { ThemeSwitch } from '../ThemeSwapper'
 import { SighOut } from '../../utils/SighOut';
+import { Routes } from '../../common/routes';
 
 export const Navbar = ({ isDark }: { isDark: boolean }) => {
   const handleLogout = () => {
@@ -8,7 +9,7 @@ export const Navbar = ({ isDark }: { isDark: boolean }) => {
   };
   return (
     <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-8">
-      <a href='/' className={`self-left text-2xl font-semibold whitespace-nowrap ${isDark ? 'text-white' : 'text-black'}`}>
+      <a href={Routes.Home} className={`self-left text-2xl font-semibold whitespace-nowrap ${isDark ? 'text-white ': 'text-black'}`}>
         Where in the world?
       </a>
 
@@ -18,12 +19,12 @@ export const Navbar = ({ isDark }: { isDark: boolean }) => {
       <div className="items-center justify-between w-full md:flex md:w-auto md:order-1" id="navbar-cta">
         <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-theme rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
           <li>
-            <a href="/register" className={`block py-2 px-3 md:p-0 rounded hover:bg-primary ${isDark ? 'text-white' : 'text-black'}`}>
+            <a href={Routes.SignUp} className={`block py-2 px-3 md:p-0 rounded hover:bg-primary ${isDark ? 'text-white' : 'text-black'}`}>
               Register
             </a>
           </li>
           <li>
-            <a href="/login" className={`block py-2 px-3 md:p-0 rounded hover:bg-primary ${isDark ? 'text-white' : 'text-black'}`}>
+            <a href={Routes.SignIn} className={`block py-2 px-3 md:p-0 rounded hover:bg-primary ${isDark ? 'text-white' : 'text-black'}`}>
               Login
             </a>
           </li>

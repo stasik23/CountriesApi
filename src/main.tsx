@@ -8,27 +8,25 @@ import './index.css'
 import { LoaderProvider } from './utils/LoaderUtil';
 import { Layout } from './components/Layout';
 import App from './App';
+import { Routes } from './common/routes';
 import { CountryPage } from './pages/CountryPage';
-import { SighInPage } from './pages/SignInPage';
-import { SighUpPage } from './pages/SignUpPage';
-import { UndefinedPage } from './pages/UndefinedPage'; //TODO imports to 1 stroke
-import { AuthRouter } from './route/AuthRouter';
+import { SignInPage } from './pages/SignInPage';
+import { SignUpPage } from './pages/SignUpPage';
+// import { UndefinedPage, CountryPage, SignInPage, SignUpPage } from './pages/index'; //TODO imports to 1 stroke
 
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
-    path: "/",
+      path: Routes.Home,
     element: (
       <Layout>
-        <AuthRouter> {/*TODO AuthRouter to Layout */} 
           <App />
-        </AuthRouter>
       </Layout>
     )
   },
   {
-    path: "/country/:country",
+    path: Routes.Country,
     element: (
       <Layout>
         <CountryPage />
@@ -36,27 +34,27 @@ const router = createBrowserRouter([
     )
   },
   {
-    path: "/login",
+    path: Routes.SignIn,
     element: (
       <Layout>
-        <SighInPage />
+        <SignInPage />
         {/* <ThemeSwitch /> */}
       </Layout>
     )
   },
   {
-    path: "/register",
+    path: Routes.SignUp,
     element: (
       <Layout>
-        <SighUpPage />
+        <SignUpPage />
         {/* <ThemeSwitch /> */}
       </Layout>
     )
   },
-  {
-    path: '*',
-    element: <UndefinedPage />
-  }
+  // {
+  //   path: '*',
+  //     element: <UndefinedPage />
+  // }
 ])
 
 const root = document.getElementById('root');

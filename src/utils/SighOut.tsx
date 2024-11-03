@@ -1,6 +1,6 @@
 import { getAuth, signOut } from "firebase/auth";
 import { Bounce, toast } from "react-toastify";
-import { app } from '../firebase/index'
+import { app } from '../firebase'
 
 const auth = getAuth(app);
 

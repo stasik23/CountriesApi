@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ICountry } from '../../types';
+import { ICountry } from '../../common/types';
 import data from "../../../data.json";
 
 interface FilterCountriesProps {
@@ -15,7 +15,7 @@ export const FilterCountries: React.FC<FilterCountriesProps> = ({ onFilter }) =>
     useEffect(() => {
         const filteredCountries = countries.filter(
             (country) =>
-                country.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+                country.name.common.toLowerCase().includes(searchQuery.toLowerCase()) &&
                 (region === "All" || country.region === region)
         );
 

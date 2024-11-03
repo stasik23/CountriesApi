@@ -1,42 +1,26 @@
-import { useEffect, useState } from 'react';
-import { auth } from '../../firebase';
-import { SignIn } from '../../utils/SignIn';
+import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from "react-hook-form";
-import { useNavigate } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
 import { useLoader } from '../../utils/LoaderUtil';
+import { handleSignIn } from '../../utils/handleSignIn';
+import { auth } from '../../firebase';
 
 
-export const SighInPage = () => {
+export const SignInPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [isEmail, setEmail] = useState<string>('')
   const [isPassword, setPassword] = useState<string>('')
-  const { isLoading, setLoading } = useLoader();
-  const navigate = useNavigate()
+  const { isLoading } = useLoader();
 
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, [setLoading]); //TODO DELETE THIS useEffect
-
-  if (isLoading) return <div><Loader/></div>
-
-  const handleSignIn = async () => {
-    SignIn({ auth, email: isEmail, password: isPassword });
-    navigate('/')
-    console.log(isEmail, isPassword);
-  }; //TODO EXPORT handleSignIn TO UTILS FOLDER
-
+  if (isLoading) return <div><Loader /></div>
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="flex flex-col items-center space-y-4">
-      <h1 className="text-6xl font-bold text-gray-700 mb-4">Login</h1>
-      <input
+        <h1 className="text-6xl font-bold text-gray-700 mb-4">Login</h1>
+        <input
           {...register("email", {
             required: "Email is required",
             pattern: {
@@ -72,7 +56,7 @@ export const SighInPage = () => {
 
         <button
           className="bg-blue-500 text-white p-2 rounded w-64"
-          onClick={handleSubmit(handleSignIn)}
+          onClick={handleSubmit((data) => handleSignIn(auth, data.email, data.password))}
         >
           Login
         </button>

@@ -8,13 +8,16 @@ export const CountryPage = () => {
           nativeName: '',
           population: 0,
           region: '',
-          subRegion: '',
+          subregion: '',
           capital: '',
-          topLevelDomain: '',
-          currencies: '',
+          topLevelDomain: [],
+          currencies: [],
           languages: [],
-          flag: '',
-          borderCountries: []
+          flags: {
+            png: '',
+            svg: ''
+          },
+          borders: []
       }}/>
     </>
   )

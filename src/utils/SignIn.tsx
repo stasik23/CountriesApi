@@ -1,14 +1,9 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { IUser } from '../common/types';
 
-interface User { //TODO ADD IUSER INTERFACE TO GLOBAL
-  auth: any; //TODO DECREASE ANY TYPE
-  email: string;
-  password: string;
-}
-
-export const SignIn = ({ auth, email, password }: User) => {
+export const SignIn = ({ auth, email, password }: IUser) => {
   const notify = (message: string, type: 'success' | 'error') => {
     toast(message, {
       position: "top-right",
@@ -23,7 +18,6 @@ export const SignIn = ({ auth, email, password }: User) => {
       type: type,
     });
   };
-
   signInWithEmailAndPassword(auth, email, password)
     .then(() => {
       notify('🦄 Success! You are logged in!', 'success');
@@ -34,3 +28,5 @@ export const SignIn = ({ auth, email, password }: User) => {
       notify(`Error: ${errorMessage}`, 'error');
     });
 };
+export type { IUser };
+

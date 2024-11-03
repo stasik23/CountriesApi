@@ -1,14 +1,15 @@
 import  { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FilterCountries } from "../FilterCountries";
-import { ICountry } from "../../types";
+import { ICountry } from "../../common/types";
+import { Routes } from "../../common/routes";
 
 export const CountriesGrid = () => {
     const [countries, setCountries] = useState<ICountry[]>([]);
     const navigate = useNavigate();
 
     const handleProductClick = (countryName: string) => {
-        navigate(`/country/${countryName}`);
+        navigate(`${Routes.Country}/${countryName}`);
     };
 
     return (
@@ -17,9 +18,9 @@ export const CountriesGrid = () => {
             <div className="grid gap-16 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {countries.map((country) => (
                     <div
-                        key={country.name}
+                        key={country.name.common}
                         className="bg-background border border-elements rounded-lg shadow-md cursor-pointer"
-                        onClick={() => handleProductClick(country.name)}
+                        onClick={() => handleProductClick(country.name.common)}
                     >
                         {country.flags && (
                             <img
@@ -29,7 +30,7 @@ export const CountriesGrid = () => {
                             />
                         )}
                         <div className="p-4">
-                            <h3 className="text-lg text-text font-bold">{country.name}</h3>
+                            <h3 className="text-lg text-text font-bold">{country.name.common}</h3>
                             <p>Population: {country.population?.toLocaleString()}</p>
                             <p>Region: {country.region}</p>
                             <p>Capital: {country.capital}</p>
