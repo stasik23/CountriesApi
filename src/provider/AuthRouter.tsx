@@ -1,35 +1,36 @@
 import { useEffect, useState } from 'react';
 import { auth } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-import '../App.css';
-import { CountriesGrid } from '../components/CountriesGrid';
 import { NotAuthorized } from '../pages/NotAuthorized';
 import { Loader } from '../components/Loader';
+// import { CountriesGrid } from '../components/CountriesGrid';
 
-interface AuthRouterProps {
-  // children: React.ReactNode;
-}
+export const AuthRouter = ({ children }: { children: React.ReactNode }) => {
+  const [authorized, setAuthorized] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-export const AuthRouter: React.FC<AuthRouterProps> = () => { //{children}
-  const [Authorized, setAuthorized] = useState(false);
-  const [Loading, setLoading] = useState(true);
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       setAuthorized(!!user);
       setLoading(false);
+      console.log(user);
+      console.log(children);
     });
     return () => unsub();
   }, []);
 
-  if (Loading) { return <Loader /> }
+  if (loading) { 
+    return <Loader /> 
+  }
+  if (!authorized) { 
+    return <NotAuthorized /> 
+  }
 
-  if (!Authorized) { return <NotAuthorized /> }
+  if (!children) {
+    console.warn('No children passed to AuthRouter');
+    return null;
+  }
 
-  return (
-    <>
-      {/* {children} */}
-      <CountriesGrid />
-    </>
-  )
+  return <>{children}</>;
 }
 

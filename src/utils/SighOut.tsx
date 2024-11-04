@@ -4,7 +4,7 @@ import { app } from '../firebase'
 
 const auth = getAuth(app);
 
-export const SighOut = async () => {
+export const sighOut = async () => {
 
 const notify = (message: string, type: 'success' | 'error') => {
     toast(message, {

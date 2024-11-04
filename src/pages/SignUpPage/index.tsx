@@ -3,7 +3,7 @@ import { useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { Loader } from "../../components/Loader";
-import { useLoader } from "../../utils/LoaderUtil";
+import { useLoader } from "../../provider/LoaderUtil";
 import { handleSignUp } from "../../utils/handleSignUp";
 import { auth } from "../../firebase";
 
@@ -18,7 +18,7 @@ export const SignUpPage = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="flex flex-col items-center space-y-4">
-          <h1 className="text-6xl font-bold text-gray-700 mb-4">Register</h1>
+          <h1 className="text-6xl font-bold text-white mb-4">Register</h1>
           <input
             {...register("email", {
               required: "Email is required",

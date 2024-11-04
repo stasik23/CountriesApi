@@ -1,49 +1,31 @@
 import { useEffect, useState } from 'react';
 import { ICountry } from '../../common/types';
-// import data from "../../../data.json"
-import { useParams } from 'react-router-dom';
-export const CountryDetails = () => {
-  const { country } = useParams<{ country: string }>();
+import { fetchCountryByName } from '../../utils/fetchData';
+
+export const CountryDetails = ({ countryName }: { countryName: string }) => {
   const [selectedCountry, setSelectedCountry] = useState<ICountry | undefined>();
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://restcountries.com/v3.1/all");
-        const data = await response.json();
-        const found = data.find((c: ICountry) =>
-          c.name.common.toLowerCase() === country?.toLowerCase()
-        );
-        setSelectedCountry(found);
-      } catch (error) {
-        console.error("Error fetching country data:", error);
-      } finally {
-        setLoading(false);
+    const loadCountry = async () => {
+      if (countryName) {
+        try {
+          const data = await fetchCountryByName(countryName);
+          setSelectedCountry(data);
+        } catch (error) {
+          console.error('Error fetching country:', error);
+        } finally {
+          setLoading(false);
+        }
       }
     };
+    
+    loadCountry();
+  }, [countryName]);
 
-    fetchData();
-  }, [country]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch("https://restcountries.com/v3.1/all");
-  //       const data = await response.json();
-  //       const found = data.find((c: ICountry) =>
-  //         c.name.toLowerCase() === country?.toLowerCase()
-  //       );
-  //       setSelectedCountry(found);
-  //     } catch (error) {
-  //       console.error("Error fetching country data:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [country]);
-
-  console.log("selectedCountry", selectedCountry);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (!selectedCountry) {
     return <div>Country not found</div>;
@@ -60,8 +42,10 @@ export const CountryDetails = () => {
         <p><strong>Subregion:</strong> {selectedCountry.subregion}</p>
         <p><strong>Capital:</strong> {selectedCountry.capital}</p>
         <p><strong>Top Level Domain:</strong> {Array.isArray(selectedCountry.topLevelDomain) ? selectedCountry.topLevelDomain.join(', ') : selectedCountry.topLevelDomain}</p>
-        <p><strong>Currencies:</strong> {selectedCountry.currencies?.map((c) => `${c.name} (${c.symbol})`).join(', ')}</p>
-        <p><strong>Languages:</strong> {selectedCountry.languages?.map((l) => l.name).join(', ')}</p>
+        <p><strong>Currencies:</strong> {Object.values(selectedCountry.currencies || {})
+          .map((c: any) => `${c.name} (${c.symbol})`).join(', ')}</p>
+        <p><strong>Languages:</strong> {Object.values(selectedCountry.languages || {})
+          .map((l: any) => l.name).join(', ')}</p>
 
 
         <div className="mt-4">

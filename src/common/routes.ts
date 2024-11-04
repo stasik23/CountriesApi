@@ -1,6 +1,6 @@
-export enum Routes {
-    Home = "/",
-    Country = "/country/:country",
-    SignIn = "/login",
-    SignUp = "/register",
-  }
+export const Routes = {
+    Home: "/",
+    Country: "/country",
+    SignIn: "/login", 
+    SignUp: "/register"
+} as const;

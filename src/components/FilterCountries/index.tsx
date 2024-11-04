@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ICountry } from '../../common/types';
 import data from "../../../data.json";
-
-interface FilterCountriesProps {
-    onFilter: (filteredCountries: ICountry[]) => void;
-}
+import { FilterCountriesProps } from '../../common/filter';
 
 export const FilterCountries: React.FC<FilterCountriesProps> = ({ onFilter }) => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -15,7 +12,7 @@ export const FilterCountries: React.FC<FilterCountriesProps> = ({ onFilter }) =>
     useEffect(() => {
         const filteredCountries = countries.filter(
             (country) =>
-                country.name.common.toLowerCase().includes(searchQuery.toLowerCase()) &&
+                country.name?.common?.toLowerCase().includes(searchQuery.toLowerCase()) &&
                 (region === "All" || country.region === region)
         );
 

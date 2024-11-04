@@ -1,9 +1,9 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Bounce, toast } from "react-toastify";
-import { IUser } from "./SignIn";
+import { IUser } from "./signIn";
 import { NotifyType } from "../common/types";
 
-export const SignUp = ({ auth, email, password }: IUser) => {
+export const signUp = ({ auth, email, password }: IUser) => {
     const notify = (message: string, type: NotifyType.SUCCESS | NotifyType.ERROR) => {
         toast(message, {
             position: "top-right",

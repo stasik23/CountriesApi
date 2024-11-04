@@ -3,7 +3,7 @@ import { Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { IUser } from '../common/types';
 
-export const SignIn = ({ auth, email, password }: IUser) => {
+export const signIn = ({ auth, email, password }: IUser) => {
   const notify = (message: string, type: 'success' | 'error') => {
     toast(message, {
       position: "top-right",

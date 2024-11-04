@@ -1,24 +1,12 @@
-import { CountryDetails } from '../../components/CountiesDetails'
+import { useParams } from 'react-router-dom';
+import { CountryDetails } from '../../components/CountiesDetails';
 
 export const CountryPage = () => {
-  return (
-    <>
-    <CountryDetails country={{
-          name: '',
-          nativeName: '',
-          population: 0,
-          region: '',
-          subregion: '',
-          capital: '',
-          topLevelDomain: [],
-          currencies: [],
-          languages: [],
-          flags: {
-            png: '',
-            svg: ''
-          },
-          borders: []
-      }}/>
-    </>
-  )
-}
+  const { countryName } = useParams();
+  
+  if (!countryName) {
+    return <div>Country not found</div>;
+  }
+
+  return <CountryDetails countryName={countryName} />;
+};
