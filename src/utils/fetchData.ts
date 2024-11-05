@@ -13,7 +13,7 @@ export const fetchCountries = async (): Promise<ICountry[]> => {
 
 export const fetchCountryByName = async (countryName: string): Promise<ICountry | undefined> => {
     try {
-        const response = await fetch("https://restcountries.com/v3.1/all");
+        const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
         const data = await response.json();
         return data.find((c: ICountry) => 
             c.name.common.toLowerCase() === countryName?.toLowerCase()

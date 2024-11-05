@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './index.css'
 import { LoaderProvider } from './provider/LoaderUtil';
 import { Layout } from './components/Layout';
-import App from './App';
+import { App } from './App';
 import { Routes } from './common/routes';
 import { CountryPage } from './pages/CountryPage';
 import { SignInPage } from './pages/SignInPage';

@@ -1,23 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { ICountry } from '../../common/types';
-import data from "../../../data.json";
+import React, { useState } from 'react';
 import { FilterCountriesProps } from '../../common/filter';
 
-export const FilterCountries: React.FC<FilterCountriesProps> = ({ onFilter }) => {
+export const FilterCountries: React.FC<FilterCountriesProps> = ({ region, setRegion }) => {
     const [searchQuery, setSearchQuery] = useState("");
-    const [region, setRegion] = useState("All");
-
-    const countries: ICountry[] = data as unknown as ICountry[];
-
-    useEffect(() => {
-        const filteredCountries = countries.filter(
-            (country) =>
-                country.name?.common?.toLowerCase().includes(searchQuery.toLowerCase()) &&
-                (region === "All" || country.region === region)
-        );
-
-        onFilter(filteredCountries);
-    }, [searchQuery, region, countries, onFilter]);
 
     return (
         <div className="font-NunitoSans p-6">
@@ -34,7 +19,7 @@ export const FilterCountries: React.FC<FilterCountriesProps> = ({ onFilter }) =>
                     value={region}
                     onChange={(e) => setRegion(e.target.value)}
                 >
-                     <option value="All">Filter by Region</option>
+                    <option value="All">Filter by Region</option>
                     <option value="Africa">Africa</option>
                     <option value="Americas">Americas</option>
                     <option value="Asia">Asia</option>
