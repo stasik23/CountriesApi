@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ICountry } from '../../common/types';
 import { fetchCountryByName } from '../../utils/fetchData';
+import { BackButton } from '../BackButton';
 
 export const CountryDetails = ({ countryName }: { countryName: string }) => {
   const [selectedCountry, setSelectedCountry] = useState<ICountry | undefined>();
@@ -19,7 +20,7 @@ export const CountryDetails = ({ countryName }: { countryName: string }) => {
         }
       }
     };
-    
+
     loadCountry();
   }, [countryName]);
 
@@ -30,32 +31,51 @@ export const CountryDetails = ({ countryName }: { countryName: string }) => {
   if (!selectedCountry) {
     return <div>Country not found</div>;
   }
-
   return (
-    <div className="flex justify-between flex-wrap p-16 bg-gray-100">
-      <div key={selectedCountry.alpha2Code} className="w-11/12 md:w-1/2 p-4">
-        <img src={selectedCountry.flags?.svg} alt={`${selectedCountry.name} Flag`} className="w-full" />
-        <h1 className="text-4xl font-sans mb-4">{selectedCountry.name.common}</h1>
-        <p><strong>Native Name:</strong> {selectedCountry.name.official}</p>
-        <p><strong>Population:</strong> {selectedCountry.population?.toLocaleString()}</p>
-        <p><strong>Region:</strong> {selectedCountry.region}</p>
-        <p><strong>Subregion:</strong> {selectedCountry.subregion}</p>
-        <p><strong>Capital:</strong> {selectedCountry.capital}</p>
-        <p><strong>Top Level Domain:</strong> {Array.isArray(selectedCountry.topLevelDomain) ? selectedCountry.topLevelDomain.join(', ') : selectedCountry.topLevelDomain}</p>
-        <p><strong>Currencies:</strong> {Object.values(selectedCountry.currencies || {})
-          .map((c: any) => `${c.name} (${c.symbol})`).join(', ')}</p>
-        <p><strong>Languages:</strong> {Object.values(selectedCountry.languages || {})
-          .map((l: any) => l.name).join(', ')}</p>
+    <div className="font-NunitoSans p-16">
+      <BackButton />
 
+      <div className="flex gap-32">
+        <div className="w-1/2">
+          <img 
+            src={selectedCountry.flags?.svg} 
+            alt={`${selectedCountry.name} Flag`} 
+            className="w-full h-auto"
+          />
+        </div>
 
-        <div className="mt-4">
-          <strong>Border Countries:</strong>
-          <div className="flex space-x-3 mt-2">
-            {selectedCountry.borders?.map((border: string) => (
-              <span key={border} className="border rounded px-4 py-1 bg-primary shadow-sm">
-                {border}
-              </span>
-            ))}
+        <div className="w-1/2 pt-10">
+          <h1 className="text-3xl font-bold mb-8">{selectedCountry.name.common}</h1>
+          
+          <div className="flex gap-24">
+            <div className="space-y-3">
+              <p><span className="font-semibold">Native Name:</span> {selectedCountry.name.official}</p>
+              <p><span className="font-semibold">Population:</span> {selectedCountry.population?.toLocaleString()}</p>
+              <p><span className="font-semibold">Region:</span> {selectedCountry.region}</p>
+              <p><span className="font-semibold">Subregion:</span> {selectedCountry.subregion}</p>
+              <p><span className="font-semibold">Capital:</span> {selectedCountry.capital}</p>
+            </div>
+            
+            <div className="space-y-3">
+              <p><span className="font-semibold">Top Level Domain:</span> {selectedCountry.tld?.join(', ')}</p>
+              <p><span className="font-semibold">Currencies:</span> {Object.values(selectedCountry.currencies || {})
+                .map((c: any) => `${c.name} (${c.symbol})`).join(', ')}</p>
+              <p><span className="font-semibold">Languages:</span> {Object.values(selectedCountry.languages || {}).join(', ')}</p>
+            </div>
+          </div>
+
+          <div className="mt-16 flex items-center gap-4">
+            <span className="font-semibold">Border Countries:</span>
+            <div className="flex flex-wrap gap-2">
+              {selectedCountry.borders?.map((border: string) => (
+                <span 
+                  key={border} 
+                  className="px-6 py-1 border-2 bg-white shadow-sm rounded text-sm hover:shadow-lg transition-shadow"
+                >
+                  <a href={`/country/${border}`}>{border}</a>
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

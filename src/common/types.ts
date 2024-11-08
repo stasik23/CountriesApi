@@ -59,4 +59,5 @@ export interface ICountry {
     }[];
     cioc: string;
     independent: boolean;
+    tld?: string[];
 }

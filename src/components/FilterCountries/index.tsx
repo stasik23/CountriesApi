@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FilterCountriesProps } from '../../common/filter';
 
-export const FilterCountries: React.FC<FilterCountriesProps> = ({ region, setRegion }) => {
-    const [searchQuery, setSearchQuery] = useState("");
+export const FilterCountries: React.FC<FilterCountriesProps> = ({ region, setRegion, searchQuery, setSearchQuery }) => {
 
     return (
         <div className="font-NunitoSans p-6">

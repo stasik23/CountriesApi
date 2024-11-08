@@ -12,7 +12,7 @@ import { Routes } from './common/routes';
 import { CountryPage } from './pages/CountryPage';
 import { SignInPage } from './pages/SignInPage';
 import { SignUpPage } from './pages/SignUpPage';
-import { NotAuthorized } from './pages/NotAuthorized';
+import { NotAuthorizedPage } from './pages/NotAuthorized';
 import { Navbar } from './components/Navbar';
 // import { UndefinedPage, CountryPage, SignInPage, SignUpPage } from './pages/index'; //TODO imports to 1 stroke
 
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
     path: Routes.SignIn,
     element: (
       <>
-        <Navbar isDark={true} />
+        <Navbar />
         <SignInPage />
       </>
     )
@@ -49,14 +49,14 @@ const router = createBrowserRouter([
     path: Routes.SignUp,
     element: (
       <>
-        <Navbar isDark={true} />
+        <Navbar />
         <SignUpPage />
       </>
     )
   },
   {
     path: '*',
-    element: <NotAuthorized />
+    element: <NotAuthorizedPage />
   }
 ])
 

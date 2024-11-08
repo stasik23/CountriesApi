@@ -1,7 +1,9 @@
 import { ICountry } from "./types";
 
 export interface FilterCountriesProps {
-    onFilter: (filteredCountries: ICountry[]) => void;
     region: string;
+    searchQuery: string;
+    setSearchQuery: (query: string) => void;
     setRegion: (region: string) => void;
-}
+    onFilter: (countries: ICountry[]) => void;
+  }

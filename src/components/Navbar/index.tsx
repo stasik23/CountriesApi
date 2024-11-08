@@ -1,19 +1,19 @@
 import '../../index.css';
 import { Routes } from '../../common/routes';
-import { sighOut } from '../../utils/SighOut';
+import { sighOut } from '../../utils/sighOut';
 
 export const Navbar = () => {
   const handleLogout = () => {
     sighOut();
   };
   return (
-    <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-8 bg-black">
+    <div className="max-w-screen flex flex-wrap items-center justify-between p-8 bg-slate-800">
       <a href={Routes.Home} className="self-left text-2xl font-semibold whitespace-nowrap text-white">
         Where in the world?
       </a>
 
-      <div className="items-center justify-between w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-        <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-theme rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+      <div className="items-center w-full md:flex md:w-auto" id="navbar-cta">
+        <ul className="flex flex-col font-medium md:p-0 mt-4 border border-theme rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
           <li>
             <a href={Routes.SignUp} className="block py-2 px-3 md:p-0 rounded hover:bg-primary text-white">
               Register
