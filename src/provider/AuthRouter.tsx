@@ -7,7 +7,7 @@ export const AuthRouter = ({ children }: { children: React.ReactNode }) => {
   const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
-    const authorized = Authorized();
+    const isAuthorized = Authorized(authorized, setAuthorized);
     setAuthorized(authorized);
   }, []);
 
